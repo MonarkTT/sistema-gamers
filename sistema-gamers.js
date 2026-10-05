@@ -28,7 +28,7 @@ function cadastrajogador() {
         if (isNaN(pontuacaojogador)) {
             console.log("Pontuação inválida! O jogador não foi cadastrado.");
             return;
-        } else {
+        } 
             let recruta = {
                 nome: nomejogador,
                 funcao: funcaojogador,
@@ -36,8 +36,7 @@ function cadastrajogador() {
             };
             time.push(recruta);
             console.log("jogador " + nomejogador + " foi cadastrado com sucesso!");
-            console.log("======================="); 
-            }       
+            console.log("=======================");  
 }
 
 function deletajogador() {
@@ -66,10 +65,6 @@ if (time.length === 0) {
             console.log("Jogador não encontrado!");
             return;
         }
-
-        time.splice(indexdeletado, 1);
-        console.log("jogador " + nomedeletado + "foi deletado com sucesso!");
-        console.log("=======================");
 }
 
 function mostrarequipe() {
@@ -150,12 +145,11 @@ function atualizarfuncao() {
 
 function buscarjogador (nomedesejado) {
     
-    console.log("Digite o nome do jogador que deseja buscar: ");
     console.log("buscando por: " + nomedesejado + "...");
     let encontrou = false;
 
     for (let i = 0; i < time.length; i++) {
-    let jogadoratual = time [i];
+        let jogadoratual = time [i];
         if (jogadoratual.nome === nomedesejado) {
             console.log("Jogador encontrado!");
             console.log("Nome: " + jogadoratual.nome + "| Função: " + jogadoratual.funcao + "| Pontuação: " + jogadoratual.pontuacao);
@@ -193,28 +187,37 @@ while (continuar === true) {
     mostrarmenu();
     let opcao = prompt("Digite sua opçao: ");
 
-    if (opcao === "1") {
-        cadastrajogador();
-    } else if(opcao === "2") {
-        deletajogador();
-    } else if (opcao === "3") {
-        mostrarequipe();
-    } else if (opcao === "4") {
-        calculamedia();
-    } else if (opcao === "5") {
-        atualizarpontuacao();
-    } else if (opcao === "6") {
-        atualizarfuncao();
-    } else if (opcao === "7") {
-        let nomedesejado = prompt("Digite o nome do jogador que deseja buscar: ");
-        buscarjogador(nomedesejado);
-    } else if (opcao === "8") {
-        atualizarnome();
-    } else if (opcao === "9") {
-        continuar = false;
-        console.log("obrigado por utilizar o GamersTeam Manager, volte sempre!");
-        break;
-    } else {
+    switch (opcao) {
+        case "1":
+            cadastrajogador();
+            break;
+        case "2":
+            deletajogador();
+            break;
+        case "3":
+            mostrarequipe();
+            break;
+        case "4":
+            calculamedia();
+            break;
+        case "5":
+            atualizarpontuacao();
+            break;
+        case "6":
+            atualizarfuncao();
+            break;
+        case "7":
+            let nomedesejado = prompt("Digite o nome do jogador que deseja buscar: ");
+            buscarjogador(nomedesejado);
+            break;
+        case "8":
+            atualizarnome();
+            break;
+        case "9":
+            continuar = false;
+            console.log("obrigado por utilizar o Sistema Gamers, volte sempre!");
+            break;
+        default:
         console.log("Opção inválida, tente novamente!");
     }
 } 
